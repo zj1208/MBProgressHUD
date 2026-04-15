@@ -379,7 +379,11 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
                 activityIndicator.color = [UIColor whiteColor];
 #if !TARGET_OS_MACCATALYST
             } else {
-               activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+                activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+#pragma clang diagnostic pop
+       
             }
 #endif
             [activityIndicator startAnimating];
